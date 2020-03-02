@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Title </h1>
+    <form action="">
+        <input type="text " name="" id="input" class="input">
+        
+        <button type="button" >Tampilkan Hasil</button>
+        <div class="output">
+            
+        </div>
+    </form>
+</body>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function (e) { 
+                e.preventDefault();
+                var input = $(".input").val();
+
+                maxPalindrome(input);
+
+                function maxPalindrome(n){
+
+                var nine = [];
+                var oneZero= 1*Math.pow(10,n-1);
+
+
+                for (var i=0 ; i < n ; i++){
+                    nine.push("9");
+                    
+                }
+                nine = nine.join("");
+                fix_nine = parseInt(nine);
+
+ 
+
+                var arr = [];    
+                for(var i =fix_nine; i>oneZero; i--){
+                    for(var j = fix_nine; j>oneZero; j--){
+                        var mul = j*i;
+                        if(isPalin(mul)){
+                            arr.push(j * i);
+                        } 
+                    }
+                }
+
+                alert( "Hasil "+Math.max.apply(Math, arr))
+                    
+                }
+
+                
+                function isPalin(i){
+                    return i.toString() == i.toString().split("").reverse().join("");
+                }
+                
+            });
+        });
+    </script>
+</html>
